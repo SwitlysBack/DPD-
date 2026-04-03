@@ -20,15 +20,11 @@
       font-size: 18px;
     }
 
-    /* SEARCH SECTION */
+    /* SEARCH */
     .hero {
       background: #f3f4f6;
       padding: 40px 20px;
       text-align: center;
-    }
-
-    .hero h2 {
-      margin-bottom: 10px;
     }
 
     .hero input {
@@ -48,11 +44,23 @@
       cursor: pointer;
     }
 
-    /* MAIN CONTENT */
+    /* LAYOUT */
     .container {
-      max-width: 700px;
+      max-width: 1000px;
       margin: 30px auto;
       padding: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .main {
+      flex: 2;
+    }
+
+    .side {
+      flex: 1;
+      font-size: 14px;
+      color: #555;
     }
 
     .box {
@@ -67,11 +75,9 @@
       font-weight: bold;
     }
 
-    /* TIMELINE */
     .timeline {
       border-left: 3px solid #ddd;
       padding-left: 15px;
-      margin-top: 10px;
     }
 
     .event {
@@ -89,17 +95,15 @@
       font-weight: bold;
     }
 
-    /* OPTIONS */
     label {
       display: block;
       margin-top: 8px;
-      font-size: 14px;
     }
 
-    input[type="date"] {
+    input[type="text"], input[type="date"] {
       width: 100%;
       padding: 10px;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
     button.full {
@@ -120,7 +124,6 @@
 
 <body>
 
-<!-- HEADER -->
 <div class="header">DPD PARCEL TRACK</div>
 
 <!-- SEARCH -->
@@ -135,45 +138,73 @@
 <!-- RESULTS -->
 <div class="container hidden" id="step2">
 
-  <div class="box">
-    <p><strong>Tracking:</strong> 12345678901234</p>
-    <p><strong>Status:</strong> <span class="status">Delivery Attempt Failed</span></p>
-    <p><strong>Estimated delivery:</strong> 4 April 2026 (08:00 - 12:00)</p>
-    <p><strong>Delivery address:</strong> Liverpool, UK</p>
-  </div>
+  <!-- MAIN CONTENT -->
+  <div class="main">
 
-  <div class="box">
-    <h3>Shipment Progress</h3>
+    <div class="box">
+      <p><strong>Tracking:</strong> 12345678901234</p>
+      <p><strong>Status:</strong> <span class="status">Delivery Attempt Failed</span></p>
+      <p><strong>Estimated delivery:</strong> 4 April 2026 (08:00 - 12:00)</p>
+      <p><strong>Delivery address:</strong> Liverpool, UK</p>
+    </div>
 
-    <div class="timeline">
-      <div class="event">
-        Parcel collected
-        <span>2 April 2026 - 08:10</span>
-      </div>
+    <div class="box">
+      <h3>Shipment Progress</h3>
 
-      <div class="event">
-        Out for delivery
-        <span>3 April 2026 - 09:00</span>
-      </div>
+      <div class="timeline">
+        <div class="event">
+          Parcel collected
+          <span>2 April 2026 - 08:10</span>
+        </div>
 
-      <div class="event active">
-        Delivery attempted
-        <span>3 April 2026 - 14:32</span>
+        <div class="event">
+          Out for delivery
+          <span>3 April 2026 - 09:00</span>
+        </div>
+
+        <div class="event active">
+          Delivery attempted
+          <span>3 April 2026 - 14:32</span>
+        </div>
       </div>
     </div>
+
+    <div class="box">
+      <h3>Change Delivery</h3>
+
+      <label><input type="radio" name="option" value="Reschedule"> Reschedule delivery</label>
+      <label><input type="radio" name="option" value="Neighbour"> Deliver to neighbour</label>
+      <label><input type="radio" name="option" value="Safe place"> Leave in safe place</label>
+      <label><input type="radio" name="option" value="Pickup"> Pickup point</label>
+
+      <h4 style="margin-top:15px;">Delivery Details (Demo)</h4>
+
+      <input type="text" placeholder="Full Name">
+      <input type="text" placeholder="Address">
+      <input type="text" placeholder="Email">
+      <input type="text" placeholder="Mobile Number">
+
+      <input type="date" id="date">
+
+      <button class="full" onclick="confirm()">Confirm changes</button>
+    </div>
+
   </div>
 
-  <div class="box">
-    <h3>Change Delivery</h3>
+  <!-- SIDE INFO -->
+  <div class="side">
 
-    <label><input type="radio" name="option" value="Reschedule"> Reschedule delivery</label>
-    <label><input type="radio" name="option" value="Neighbour"> Deliver to neighbour</label>
-    <label><input type="radio" name="option" value="Safe place"> Leave in safe place</label>
-    <label><input type="radio" name="option" value="Pickup"> Pickup point</label>
+    <h3>Delivery Information</h3>
+    <p>DPD offers flexible delivery options and real-time tracking updates.</p>
 
-    <input type="date" id="date">
+    <p>You can change your delivery date, choose a safe place, or redirect your parcel.</p>
 
-    <button class="full" onclick="confirm()">Confirm changes</button>
+    <p>Our Predict service provides a one-hour delivery time slot.</p>
+
+    <p>If you miss your delivery, you can easily rearrange it online.</p>
+
+    <p><strong>Note:</strong> This is a demonstration interface for educational purposes.</p>
+
   </div>
 
 </div>
