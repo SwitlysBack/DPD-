@@ -18,8 +18,14 @@
       background: white;
       padding: 25px;
       border-radius: 14px;
-      width: 340px;
+      width: 360px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
     }
 
     .logo {
@@ -79,6 +85,28 @@
       font-weight: bold;
     }
 
+    .timeline {
+      margin-top: 15px;
+      border-left: 3px solid #ddd;
+      padding-left: 10px;
+    }
+
+    .event {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .event span {
+      display: block;
+      color: #666;
+      font-size: 12px;
+    }
+
+    .active {
+      color: #dc2626;
+      font-weight: bold;
+    }
+
     .success {
       color: green;
       margin-top: 10px;
@@ -94,24 +122,37 @@
 
   <!-- STEP 1 -->
   <div id="step1">
-    <h2>Missed Delivery</h2>
-    <p class="sub">Enter your parcel number to continue</p>
+    <h2>Track your parcel</h2>
+    <p class="sub">Enter your parcel number</p>
 
     <input id="tracking" type="text" placeholder="e.g. PT123456789">
 
-    <button onclick="findParcel()">Find my parcel</button>
+    <button onclick="findParcel()">Track Parcel</button>
   </div>
 
   <!-- STEP 2 -->
   <div id="step2" class="hidden">
-    <h2>Delivery Update</h2>
+    <h2>Tracking Details</h2>
 
     <div class="info-box">
       <p><strong>Tracking:</strong> PT123456789</p>
       <p><strong>Status:</strong> <span class="status">Delivery Attempt Failed</span></p>
-      <p><strong>Date:</strong> 3 April 2026</p>
-      <p><strong>Time:</strong> 14:32</p>
-      <p><strong>Reason:</strong> No answer at address</p>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="timeline">
+      <div class="event">
+        Delivered to depot
+        <span>2 April 2026 - 08:10</span>
+      </div>
+      <div class="event">
+        Out for delivery
+        <span>3 April 2026 - 09:00</span>
+      </div>
+      <div class="event active">
+        Delivery attempted
+        <span>3 April 2026 - 14:32</span>
+      </div>
     </div>
 
     <label>Choose a new delivery option:</label>
